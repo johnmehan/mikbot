@@ -2,23 +2,33 @@ void setup() {
   Serial.begin(115200);
   delay(10);
 
+
+  //initialize EEPROM
+  EEPROM.begin(512);
+
+  //setSSID("RESET");
+  //setSSIDPass("TEST");
+  
   Serial.println(F("MikBot - Starting"));
 
-  // Connect to WiFi access point.
-  Serial.println(); Serial.println();
-  Serial.print("Connecting to ");
-  Serial.println(WLAN_SSID);
+  snprintf(DEBUG_MSG,DEBUG_MSG_LEN,"ESP [Id:%x] \n",ESP.getChipId());
+  Serial.println(DEBUG_MSG);
+  
+  snprintf(DEBUG_MSG,DEBUG_MSG_LEN,"Flash [Id:%x; Size:%i bytes; Speed:%i Hz] \n",ESP.getFlashChipId(),ESP.getFlashChipRealSize(),ESP.getFlashChipSpeed());
+  Serial.println(DEBUG_MSG);
 
-  WiFi.begin(WLAN_SSID, WLAN_PASS);
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-  Serial.println();
+  //set PIN MODES
+  /*
+  pinMode(PIN_RIGHT_0, OUTPUT); 
+  pinMode(PIN_RIGHT_1, OUTPUT); 
+  pinMode(PIN_LEFT_0, OUTPUT); 
+  pinMode(PIN_LEFT_1, OUTPUT); 
+  */
 
-  Serial.println("WiFi connected");
-  Serial.println("IP address: "); Serial.println(WiFi.localIP());
+  readSSIDValues();  
+  setupWiFi();
 
   // Setup MQTT subscription for move feed.
-  mqtt.subscribe(&moveFeed);
+  //mqtt.subscribe(&moveFeed);
 }
+

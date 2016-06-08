@@ -28,5 +28,12 @@ void loop() {
   if(! mqtt.ping()) {
     mqtt.disconnect();
   }
+
+  //handle http commands
+  server.handleClient();
+
+  //process serial requests
+  //processSerialRequests();
+  
   
 }
