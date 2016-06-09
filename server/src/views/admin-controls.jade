@@ -2,7 +2,24 @@ extends admin-tabs
 
 block tab
   canvas(id='myCanvas', width='200', height='100')
-  p Its aliiiive
+  #controls
+        form(method='POST')
+          button(value='connect') Connect
+          button(value='disconnect') Disconnect
+          p
+            strong Press arrows to navigate
+          table(style='width:50%;')
+            tr
+              td(colspan='2', align='center')
+                button(value='up', style="background-image:url(''):align:center;width:50px;") UP
+            tr
+              td(align='center', width='50%;')
+                button(value='left', style="background-image:url(''):align:center;width:50px;") LEFT
+              td(align='center')
+                button(value='right', style="background-image:url(''):align:center;width:50px;") RIGHT
+            tr
+              td(colspan='2', align='center')
+                button(value='down', style="background-image:url(''):align:center;width:50px;") DOWN
 
 block append head
   script(src='main.js')
