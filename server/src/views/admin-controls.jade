@@ -1,7 +1,9 @@
 extends admin-tabs
 
 block append head
+  script(src='//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js')
   script.
+    /*
     var canvas = document.getElementById("myCanvas").getContext("2d");
     canvas.fillStyle = "#000000";
     canvas.scale(4, 4);
@@ -25,25 +27,34 @@ block append head
       }
       return img;
     };
+    */
 
     window.addEventListener("keydown", function(e) {
       switch(event.keyCode) {
-        case 37:
-          left = true;
+        case 37: //left
+          post('L');
           break;
-        case 38:
-          up = true;
+        case 38: //up
+          post('F');
           break;
-        case 39:
-          right = true;
+        case 39: //right
+          post('R');
           break;
-        case 40:
-          down = true;
+        case 40: //down
+          post('B');
           break;
       }
-      console.log(event.keyCode);
     });
     
+    function post(dir) {
+      $.post("/controls/controls/:arrow", {
+        command:dir
+      },
+      null);
+      console.log(event.keyCode);
+    }
+    
+    /*
     window.addEventListener("keyup", function(e) {
       switch(event.keyCode) {
         case 37:
@@ -61,6 +72,7 @@ block append head
       }
       console.log(event.keyCode);
     });
+    */
 
 block tab
   canvas(id='myCanvas', width='200', height='100')
