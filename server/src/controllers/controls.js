@@ -19,5 +19,5 @@ exports.processArrow  = function(req, res) {
   }
 
   logger.info(urlParts);
-
+  res.send(200);
 };
