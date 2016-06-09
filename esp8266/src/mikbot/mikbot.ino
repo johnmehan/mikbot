@@ -74,6 +74,7 @@ int  DEBUG_MSG_LEN=100;
 
 MDNSResponder mdns;
 ESP8266WebServer server(HTTP_LISTEN_PORT);
+ESP8266HTTPUpdateServer httpUpdater;
 
 // Create an ESP8266 WiFiClient class to connect to the MQTT server.
 WiFiClient client;

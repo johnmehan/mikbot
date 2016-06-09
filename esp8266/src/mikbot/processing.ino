@@ -32,7 +32,8 @@ void processConfigRequest(){
     if(server.hasArg(PARAM_SSIDPASS)){
           String ssidpass=server.arg(PARAM_SSIDPASS);
           Serial.print(F("SSID Pass: "));
-          Serial.println(ssidpass);
+          Serial.println(F("**********"));
+          //Serial.println(ssidpass);
           setSSIDPass(ssidpass.c_str());
     }
     
@@ -50,9 +51,7 @@ void processReboot(){
 
     Serial.println(F("REBOOTING"));
     delay(1000);
-    void(* rebootFunc) (void) = 0;//declare reset function at address 0
-    rebootFunc();
-
+    ESP.restart();
 }
 
 
@@ -68,6 +67,34 @@ void processReset(){
     setSSIDPass("PASS");
     processReboot();
 }
+
+void showConfigPage(){
+
+  char temp[400];
+  int sec = millis() / 1000;
+  int min = sec / 60;
+  int hr = min / 60;
+
+  snprintf ( temp, 400,
+
+"<html>\
+  <head>\
+    <meta http-equiv='refresh' content='5'/>\
+    <title>MikBOT</title>\
+    <style>\
+      body { background-color: #cccccc; font-family: Arial, Helvetica, Sans-Serif; Color: #000088; }\
+    </style>\
+  </head>\
+  <body>\
+    <h1>Hello from MikBOT!</h1>\
+    <p>Uptime: %02d:%02d:%02d</p>\
+  </body>\
+</html>",
+    hr, min % 60, sec % 60
+  );
+  server.send ( 200, "text/html", temp );
+}
+
 
 /*
  * setSSID

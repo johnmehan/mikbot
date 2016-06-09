@@ -1,13 +1,12 @@
 void configureAndStartServer(){
 
-  #ifdef ESP_OTA
-    httpUpdater.setup(&server);
-  #endif
-  
   //SERVER INIT
+  httpUpdater.setup(&server);
+  
   server.on("/config",HTTP_GET,processConfigRequest);
   server.on("/reboot",HTTP_GET,processReboot);
   server.on("/reset",HTTP_GET,processReset);
+  server.onNotFound ( showConfigPage );
   
   server.begin();
   
@@ -30,8 +29,8 @@ void configureAndStartServer(){
     }
   }
   
-  Serial.print("SSID: ");
-  Serial.println(ssid);
+  //Serial.print("SSID: ");
+  //Serial.println(ssid);
   
   //Serial.println("Reading EEPROM pass");
   
@@ -44,8 +43,8 @@ void configureAndStartServer(){
   }
   
   
-  Serial.print("PASS: ");
-  Serial.println(ssid_password);  
+  //Serial.print("PASS: ");
+  //Serial.println(ssid_password);  
 
  }
 
@@ -105,6 +104,7 @@ void setupWiFi()
 // testWifi
 // ************************************************
 int testWifi(void) {
+ 
   int c = 0;
   while ( c < 20 ) {
     if (WiFi.status() == WL_CONNECTED) { return(20); } 
