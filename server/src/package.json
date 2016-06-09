@@ -1,6 +1,6 @@
 {
-	"name": "telemetry",
-	"description": "Anonymized data collection",
+	"name": "mikbot",
+	"description": "MikBot Server",
 	"version": "1.0.0-Alpha",
 	"private": "true",
 	"dependencies": {
