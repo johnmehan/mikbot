@@ -10,41 +10,36 @@ void processMove(char *direction){
     Serial.print(F("Move: "));
     Serial.println(direction);
 
-    int duration = 3000;
-    char command = toupper(direction[0]);
-
+    String command = String(direction);
+    
+    int duration = 1000;
+  
     //protect against driving the motors forward and back at the same time, accidentally
     stopBot();
-      
-    switch (command) {
-      case 'F':
+
+    if (command.equalsIgnoreCase("F")) {
         forward();
-        break;
-      case 'B':
+    }
+    else if (command.equalsIgnoreCase("B")) {
         backward();
-        break;
-      case '1':
-        digitalWrite(PIN_RIGHT_Forward, 1);
-        break;
-      case '2':
-        digitalWrite(PIN_LEFT_Forward, 1);
-        break;
-      case 'R':
+    }
+   else if (command.equalsIgnoreCase("R")) {
         right();
-        break;
-      case 'L':
+   }
+   else if (command.equalsIgnoreCase("L")) {
         left();
-        break;
-      case 'D':
+   }
+   else if (command.equalsIgnoreCase("D")) {
         dance(5);
         Serial.println("Dance");
-        break;
-      case 'S':
+   }
+   else if (command.equalsIgnoreCase("S")) {
         right();
         duration = 5000;
-        Serial.println("sprin");
-        break;
-      default:
+        Serial.println("spin");
+   }
+   else
+   {
         Serial.println("Unknown move command");
     }
 
@@ -92,11 +87,11 @@ void dance(int count) {
 
   for (int i = 0; i < count; i ++) {
     right();
-    delay(750);
+    delay(500);
     stopBot();
     
     left();
-    delay(750);
+    delay(500);
     stopBot();
   }
 }
