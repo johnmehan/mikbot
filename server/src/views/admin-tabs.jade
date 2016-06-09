@@ -7,7 +7,7 @@ block content
         td
           img(src='/images/irdeto.png')
         td#header-title
-          label MikBot Server
+          label MikBot! Server
         td#header-session
           =sessionUser
         td
@@ -22,11 +22,6 @@ block content
             img(src='/images/help.png')
   div#nav
     ul
-      li
-        if (currentURL.indexOf('/tab/apps') == 0)
-          a(href='/tab/apps', id='tabApps').current Agents
-        else
-          a(href='/tab/apps', id='tabApps') Agents
       li
         if (currentURL == '/tab/controls')
           a(href='/tab/controls', id='tabControls').current Controls

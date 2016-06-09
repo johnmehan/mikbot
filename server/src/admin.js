@@ -39,10 +39,7 @@ require('./controllers/passport')(passport);
 
 var util = require('./controllers/util')
   , users = require('./controllers/users')
-  , system = require('./controllers/system')
-  , appDescriptors = require('./controllers/applicationDescriptors')
-  , controls = require('./controllers/controls')
-  , devices = require('./controllers/devices');
+  , controls = require('./controllers/controls');
 
 //----- CONFIG -----
 
@@ -91,7 +88,7 @@ app.get('/admin', function(req, res) {
 });
 
 app.post('/login', passport.authenticate('local', {failureRedirect: '/admin', failureFlash: 'Invalid credentials'}), function(req, res) {
-  res.redirect('/tab/apps');
+  res.redirect('/tab/controls');
 });
 
 app.get('/logout', users.checkAuth, function(req, res) {
@@ -103,71 +100,15 @@ app.get('/admin-help', users.checkAuth, function(req, res) {
   res.render('admin-help.jade');
 });
 
-app.get('/tab/apps', users.checkAuth, appDescriptors.render);
-
 app.get('/tab/controls', users.checkAuth, controls.render);
 
 app.get('/controls/*', users.checkAuth, controls.processArrow);
-
-app.post('tabs/controls/connect', users.checkAuth, controls.connect);
-
-app.post('tabs/controls/disconnect', users.checkAuth, controls.disconnect);
-
-app.get('/tab/server', users.checkAuth, system.render);
-
-app.get('/tab/reports', users.checkAuth, function(req, res) {
-  res.render('admin-reports.jade');
-});
 
 app.get('/tab/auth', users.checkAuth, function(req, res) {
   res.render('admin-auth.jade');
 });
 
-app.get('/tab/apps/appDescriptors/new', users.checkAuth, appDescriptors.render);
-
-app.post('/appDescriptors', users.checkAuth, appDescriptors.renderAdd);
-
-app.get('/tab/apps/appDescriptors/:id', users.checkAuth, appDescriptors.render);
-
-app.post('/appDescriptors/:id', users.checkAuth, appDescriptors.renderUpdate);
-
-app.get('/appDescriptors/:id', users.checkAuth, appDescriptors.renderDelete);
-
-app.post('/server/key', users.checkAuth, system.renderServerKeyUpdate);
-
-app.post('/server/parameters', users.checkAuth, system.renderParametersUpdate);
-
 app.post('/auth/password', users.checkAuth, users.renderPasswordUpdate);
-
-
-app.get('/report/devicelist', users.checkAuth, function(req, res) {
-  res.set('Access-Control-Allow-Origin', '*');
-  res.set('Access-Control-Allow-Methods','GET');
-  res.render('admin-reports-devicelist.jade', {
-    restURL: '/device?output=google'
-  });
-});
-
-app.get('/report/devicelist-cntrl', users.checkAuth, function(req, res) {
-  res.set('Access-Control-Allow-Origin', '*');
-  res.set('Access-Control-Allow-Methods','GET');
-  res.render('admin-reports-devicelist-cntrl.jade', {
-    restURL: '/device?output=google'
-  });
-});
-
-app.get('/report/jailbreak', users.checkAuth, function(req, res) {
-  res.set('Access-Control-Allow-Origin', '*');
-  res.set('Access-Control-Allow-Methods','GET');
-  res.render('admin-reports-jailbreak.jade', {
-    restURL: '/device?output=google'
-  });
-});
-
-// Moved from server
-app.get('/applicationDescriptor/*', appDescriptors.get);
-app.post('/applicationDescriptor', appDescriptors.create);
-app.get('/device', devices.get);
 
 //----- STARTUP -----
 
