@@ -5,3 +5,4 @@ server/.idea/
 server/src/log/
 server/thirdparty/
 *.log
+*.iml
