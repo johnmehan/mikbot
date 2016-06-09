@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="Telemetry" default="dist-puppet-master">
+  <property name="dist.dir" value="../dist"/>
+  <property name="dist.server.zip" value="${dist.dir}/telemetry-server.zip"/>
+  <property name="dist.admin.zip" value="${dist.dir}/telemetry-admin.zip"/>
+  <property name="dist.restAPI.zip" value="${dist.dir}/telemetry-restAPI.zip"/>
+  <property name="dist.dir.puppet" value="${dist.dir}/puppet"/>
+  <property name="dist.puppet.tar" value="${dist.dir}/puppet-modules.tar"/>
+  <property name="dist.dir.puppet.module.mongodb" value="${dist.dir}/modules/mongodb"/>
+  <property name="dist.dir.puppet.module.nodejs" value="${dist.dir}/modules/nodejs"/>
+  <property name="dist.dir.puppet.module.telemetry-server" value="${dist.dir}/modules/telemtry-server"/>
+  <property name="dist.dir.puppet.module.telemetry-admin" value="${dist.dir}/modules/telemetry-admin"/>
+  <property name="dist.dir.puppet.module.telemetry-restAPI" value="${dist.dir}/modules/telemetry-restservice"/>
+  <property name="bin.dir" value="bin"/>
+  <property name="install.dir" value="install"/>
+  <property name="src.dir" value="src"/>
+  <property name="src.bin.dir" value="${src.dir}/${bin.dir}"/>
+  <property name="src.lib.dir" value="${src.dir}/lib"/>
+  <property name="src.log.dir" value="${src.dir}/log"/>
+  <property name="ec_elgamal.dir" value="thirdparty/ec_elgamal"/>
+  <property name="ec_elgamal.lib"
+            value="${ec_elgamal.dir}/build/Release/elgamal.node"/>
+
+  <target name="setup" description="Setup working environment">
+    <echo level="info" message="Create directory for logs"/>
+    <mkdir dir="${src.log.dir}"/>
+
+    <echo level="info" message="Copy CLI executables"/>
+    <copy todir="${src.dir}">
+      <fileset dir=".">
+        <include name="${bin.dir}/"/>
+      </fileset>
+    </copy>
+    <chmod dir="${src.bin.dir}" perm="ug+rx" includes="*"/>
+
+    <condition property="isWindows" value="true">
+      <os family="windows"/>
+    </condition>
+
+    <condition property="isUnix" value="true">
+      <os family="unix"/>
+    </condition>
+
+<!--
+    <echo level="info" message="Install Node.js modules"/>
+
+    <!- Unix ->
+    <exec executable="npm" dir="${src.dir}" osfamily="unix" failonerror="true">
+      <arg value="install"/>
+    </exec>
+
+    <!- Windows ->
+    <exec executable="cmd" dir="${src.dir}" failonerror="true">
+      <arg value="/c"/>
+      <arg value="npm.cmd"/>
+      <arg value="install"/>
+    </exec>
+-->
+  </target>
+
+  <target name="gen-lib" depends="setup" if="isUnix"
+          description="Generate Node.js addon library">
+    <mkdir dir="${src.lib.dir}"/>
+
+    <ant dir="${ec_elgamal.dir}" inheritAll="false"/>
+
+    <copy todir="${src.lib.dir}" file="${ec_elgamal.lib}"/>
+  </target>
+
+  <target name="dist-server" depends="gen-lib"
+          description="Build Telemetry Server distribution">
+    <mkdir dir="${dist.dir}"/>
+
+    <zip destfile="${dist.server.zip}">
+      <fileset dir="${src.dir}">
+        <include name="config/serverConf.js"/>
+        <include name="controllers/"/>
+        <include name="lib/"/>
+        <include name="log/"/>
+        <include name="models/"/>
+        <include name="node_modules/"/>
+        <include name="*.json"/>
+        <include name="start.sh"/>
+        <include name="server.js"/>
+      </fileset>
+    </zip>
+  </target>
+
+  <target name="dist-admin" depends="setup"
+          description="Build Telemetry Admin distribution">
+    <mkdir dir="${dist.dir}"/>
+
+    <zip destfile="${dist.admin.zip}">
+      <fileset dir="${src.dir}">
+        <include name="${bin.dir}/"/>
+        <include name="config/adminConf.js"/>
+        <include name="controllers/"/>
+        <include name="log/"/>
+        <include name="models/"/>
+        <include name="node_modules/"/>
+        <include name="public/"/>
+        <include name="views/"/>
+        <include name="*.json"/>
+        <include name="start.sh"/>
+        <include name="admin.js"/>
+      </fileset>
+    </zip>
+  </target>
+
+  <target name="dist-restAPI" depends="setup"
+          description="Build Telemetry REST API distribution">
+    <mkdir dir="${dist.dir}"/>
+
+    <zip destfile="${dist.restAPI.zip}">
+      <fileset dir="${src.dir}">
+        <include name="${bin.dir}/"/>
+        <include name="config/restAPIConf.js"/>
+        <include name="controllers/"/>
+        <include name="log/"/>
+        <include name="models/"/>
+        <include name="node_modules/"/>
+        <include name="public/"/>
+        <include name="views/"/>
+        <include name="*.json"/>
+        <include name="start.sh"/>
+        <include name="restAPI.js"/>
+      </fileset>
+    </zip>
+  </target>
+
+  <target name="puppet-clean">
+    <delete dir="${dist.dir.puppet}" failonerror="false"/>
+  </target>
+
+  <target name="puppet-setup">
+    <mkdir dir="${dist.dir.puppet}"/>
+    <mkdir dir="${dist.dir.puppet}/manifests"/>
+    <mkdir dir="${dist.dir.puppet}/modules"/>
+    <mkdir dir="${dist.dir.puppet}/hieradata"/>
+  </target>
+
+  <target name="puppet-apt">
+    <mkdir dir="${dist.dir.puppet}/modules/apt"/>
+    <copy todir="${dist.dir.puppet}/modules/apt">
+      <fileset dir="${install.dir}/puppet/modules/apt" includes="**"/>
+    </copy>
+  </target>
+
+  <target name="puppet-mongodb">
+    <mkdir dir="${dist.dir.puppet}/modules/mongodb"/>
+    <copy todir="${dist.dir.puppet}/modules/mongodb">
+      <fileset dir="${install.dir}/puppet/modules/mongodb" includes="**"/>
+    </copy>
+  </target>
+
+  <target name="puppet-nodejs">
+    <mkdir dir="${dist.dir.puppet}/modules/nodejs"/>
+    <copy todir="${dist.dir.puppet}/modules/nodejs">
+      <fileset dir="${install.dir}/puppet/modules/nodejs" includes="**"/>
+    </copy>
+  </target>
+
+  <target name="puppet-telemetry-server" depends="setup, gen-lib">
+    <mkdir dir="${dist.dir.puppet}/modules/telemetry-server"/>
+    <copy todir="${dist.dir.puppet}/modules/telemetry-server">
+      <fileset dir="${install.dir}/puppet/modules/telemetry-server">
+      </fileset>
+    </copy>
+    <copy todir="${dist.dir.puppet}/modules/telemetry-server/files">
+      <fileset dir="${src.dir}">
+        <include name="${bin.dir}/"/>
+        <include name="config/serverConf.js"/>
+        <include name="controllers/"/>
+        <include name="lib/"/>
+        <include name="log/"/>
+        <include name="models/"/>
+        <include name="public/"/>
+        <include name="views/"/>
+        <include name="server.js"/>
+        <include name="*.json"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="puppet-telemetry-admin">
+    <mkdir dir="${dist.dir.puppet}/modules/telemetry-admin"/>
+    <copy todir="${dist.dir.puppet}/modules/telemetry-admin">
+      <fileset dir="${install.dir}/puppet/modules/telemetry-admin">
+      </fileset>
+    </copy>
+    <copy todir="${dist.dir.puppet}/modules/telemetry-admin/files">
+      <fileset dir="${src.dir}">
+        <include name="${bin.dir}/"/>
+        <include name="config/adminConf.js"/>
+        <include name="controllers/"/>
+        <include name="log/"/>
+        <include name="models/"/>
+        <include name="public/"/>
+        <include name="views/"/>
+        <include name="admin.js"/>
+        <include name="*.json"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="puppet-telemetry-restAPI">
+    <mkdir dir="${dist.dir.puppet}/modules/telemetry-restservice"/>
+    <copy todir="${dist.dir.puppet}/modules/telemetry-restservice">
+      <fileset dir="${install.dir}/puppet/modules/telemetry-restservice">
+      </fileset>
+    </copy>
+    <copy todir="${dist.dir.puppet}/modules/telemetry-restservice/files">
+      <fileset dir="${src.dir}">
+        <include name="${bin.dir}/"/>
+        <include name="config/"/>
+        <include name="controllers/"/>
+        <include name="log/"/>
+        <include name="models/"/>
+        <include name="public/"/>
+        <include name="views/"/>
+        <include name="restAPI.js"/>
+        <include name="*.json"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="dist-puppet-master" depends="puppet-setup, puppet-apt, puppet-mongodb, puppet-nodejs, puppet-telemetry-server, puppet-telemetry-admin, puppet-telemetry-restAPI"
+          description="Build Puppet modules for Puppet Master">
+    <echo>install.dir: ${install.dir}</echo>
+    <copy todir="${dist.dir.puppet}/manifests">
+      <fileset dir="${install.dir}/puppet/manifests">
+      </fileset>
+    </copy>
+    <copy todir="${dist.dir.puppet}">
+      <fileset dir="${install.dir}/puppet">
+        <include name="hiera.yaml"/>
+      </fileset>
+    </copy>
+    <copy todir="${dist.dir.puppet}/hieradata">
+      <fileset dir="${install.dir}/puppet/hieradata">
+        <include name="common.json"/>
+      </fileset>
+    </copy>
+    <tar destfile="${dist.puppet.tar}">
+      <fileset dir="${dist.dir.puppet}">
+      </fileset>
+    </tar>
+  </target>
+
+  <target name="dist" depends="dist-server, dist-admin, dist-restAPI"
+          description="Build full Telemetry distribution"/>
+
+  <target name="clean" description="Delete build-artifacts">
+    <delete dir="${dist.dir}" failonerror="false"/>
+  </target>
+
+  <target name="clean-all" depends="clean"
+          description="Delete all build-artifacts">
+    <delete dir="${src.dir}/node_modules" failonerror="false"/>
+    <delete dir="${src.bin.dir}" failonerror="false"/>
+    <delete dir="${src.lib.dir}" failonerror="false"/>
+    <delete dir="${src.log.dir}" failonerror="false"/>
+  </target>
+</project>
+

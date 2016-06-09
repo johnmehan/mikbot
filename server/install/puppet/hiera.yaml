@@ -1,0 +1,8 @@
+#---- Hiera Connfiguration file for telemetry 
+:backends:
+  - json
+#---- one directory for each environment. environment is set in puppet.conf
+:json:
+  :datadir: /etc/puppet/hieradata
+:hierarchy:
+  - common

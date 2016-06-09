@@ -1,0 +1,4 @@
+module: willdurand/nodejs
+version: 0.0.3
+url: file:///var/lib/puppet/puppet-module/cache/http_forge_puppetlabs_com-75a31f1d6f1ef6eb63b4479b3512ee1508209a7f/willdurand-nodejs-0.0.3.tar.gz
+installed: Tue Jun 11 13:32:34 -0400 2013

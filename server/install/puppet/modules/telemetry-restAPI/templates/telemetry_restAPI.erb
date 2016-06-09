@@ -1,0 +1,19 @@
+# Template for upstart configuration file on Ubuntu
+# Location: /etc/init/telemetry_restAPI.conf
+description "Telemetry REST API Service (restAPI.js)"
+
+start on (local-filesystems and net-device-up IFACE=eth0)
+stop on shutdown
+
+expect fork
+
+script
+     cd <%=install_dir%>
+     exec forever --minUptime 5000 --spinSleepTime 2000 start restAPI.js
+end script
+
+pre-stop script
+    cd <%=install_dir%>
+    exec forever stop restAPI.js
+end script
+

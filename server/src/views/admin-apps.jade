@@ -1,0 +1,126 @@
+extends admin-tabs
+
+block append head
+  script.
+    function readPubKeyFile(obj) {
+      var f = obj.files[0];
+      if (f) {
+        if (f.name.lastIndexOf('.pem') < 0) {
+          alert('Must select a PEM file');
+          obj.value = null;
+        } else {
+          var rdr = new FileReader();
+          rdr.onload = function(evt) {
+            if (evt.target.result.indexOf('PUBLIC KEY') < 0) {
+              alert('Invalid PEM PUBLIC KEY content');
+              obj.value = null;
+            } else {
+              document.getElementById('publicKey').value = evt.target.result;
+            }
+          };
+          rdr.readAsText(f);
+        }
+      }
+    }
+
+block tab
+  h3 Agent Descriptors
+  if (appDescriptors.length)
+    table.list
+      tr
+        th
+          label Agent ID
+        th
+          label Description
+        th
+          label Enabled
+        th
+          label Last Updated
+        th
+          label Actions
+      for appDescriptor in appDescriptors
+        tr
+          td
+            =appDescriptor.applicationID
+          td
+            =appDescriptor.description
+          td
+            if (appDescriptor.enabled)
+              img(src='/images/yes.png', title='Yes')
+            else
+              img(src='/images/no.png', title='No')
+          td
+            =appDescriptor.updateDate
+          td
+            a(href='/tab/apps/appDescriptors/' + appDescriptor.applicationID, id='editAppDesc', title='Edit')
+              img(src='/images/edit.gif')
+            a(href='/appDescriptors/' + appDescriptor.applicationID, id='deleteAppDesc', title='Delete')
+              img(src='/images/delete.gif')
+  else
+    label No entries
+  if (typeof context === 'undefined')
+    p
+    a(href='/tab/apps/appDescriptors/new', id='newAppDescButton')
+      button(type='button')
+        label Add Entry ...
+  else
+    br
+    br
+    hr
+    if (context === 'new')
+      h3 New Agent Descriptor
+      form(action='/appDescriptors', method='POST')
+        input(type='hidden', name='publicKey', id='publicKey')
+        table
+          tr
+            td
+              label Agent ID:
+            td
+              input(type='text', name='id', id='id', required='required', pattern='[0-9]+', title='Numeric value')
+          tr
+            td
+              label Description:
+            td
+              input(type='text', name='description', id='description', required='required')
+          tr
+            td
+              label Enabled:
+            td
+              input(type='checkbox', name='enabled', id='enabled', checked='checked', value='Y')
+          tr
+            td
+              label Public EC key:
+            td
+              input(type='file', name='pubKeyFile', id='pubKeyFile', size='65', title='PEM file', required='required', onchange='readPubKeyFile(this);')
+        p
+        input(type='submit', id='addAppDescSubmit', value='Add')
+    else
+      h3 Edit Agent Descriptor
+      form(action='/appDescriptors/' + context.applicationID, method='POST')
+        input(type='hidden', name='publicKey', id='publicKey')
+        table
+          tr
+            td
+              label Agent ID:
+            td
+              input(type='text', name='id', id='id', disabled='disabled', value=context.applicationID)
+          tr
+            td
+              label Description:
+            td
+              input(type='text', name='description', id='description', required='required', value=context.description)
+          tr
+            td
+              label Enabled:
+            td
+              if (context.enabled)
+                input(type='checkbox', name='enabled', id='enabled', checked='checked', value='Y')
+              else
+                input(type='checkbox', name='enabled', id='enabled', value='Y')
+          tr
+            td
+              label New public EC key:
+            td
+              input(type='file', name='pubKeyFile', id='pubKeyFile', size='65', title='PEM file', onchange='readPubKeyFile(this);')
+        p
+        input(type='submit', id='updateAppDescSubmit', value='Update')

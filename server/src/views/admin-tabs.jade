@@ -1,0 +1,57 @@
+extends layout
+
+block content
+  div#header
+    table(width='100%')
+      tr
+        td
+          img(src='/images/irdeto.png')
+        td#header-title
+          label Telemetry Administration
+        td#header-session
+          =sessionUser
+        td
+          &nbsp;
+        td
+          a(href='/logout', id='logout', title='Logout')
+            img(src='/images/logout.png')
+        td
+          &nbsp;
+        td
+          a(href='/admin-help', id='help', target='_blank', title='Help')
+            img(src='/images/help.png')
+  div#nav
+    ul
+      li
+        if (currentURL.indexOf('/tab/apps') == 0)
+          a(href='/tab/apps', id='tabApps').current Agents
+        else
+          a(href='/tab/apps', id='tabApps') Agents
+      li
+        if (currentURL == '/tab/server')
+          a(href='/tab/server', id='tabServer').current Server
+        else
+          a(href='/tab/server', id='tabServer') Server
+      li
+        if (currentURL == '/tab/reports')
+          a(href='/tab/reports', id='tabReports').current Reports
+        else
+          a(href='/tab/reports', id='tabReports') Reports
+      li
+        if (currentURL == '/tab/auth')
+          a(href='/tab/auth', id='tabAuth').current Authentication
+        else
+          a(href='/tab/auth', id='tabAuth') Authentication
+
+  mixin showMessages(msgs)
+    for m in msgs
+      div #{m}
+
+  if (messages.error)
+    div.msg-error
+      mixin showMessages(messages.error)
+  if (messages.info)
+    div.msg-info
+      mixin showMessages(messages.info)
+
+  block tab

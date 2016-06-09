@@ -1,0 +1,14 @@
+module.exports = {
+  development: {
+    dbUrl: '<%= dbUrl_param %>',
+    port: <%= port_param %>,
+    accesslogPath: './log/server-access.log',
+    logPath: '<%= logPath_param %>',
+    logMaxSize: 1048576,
+    logMaxFiles: 7
+  }
+  , test: {
+  }
+  , production: {
+  }
+}

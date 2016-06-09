@@ -1,0 +1,93 @@
+html
+  head
+    script(src='http://www.google.com/jsapi')
+    script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+    script.
+      google.load('visualization', '1.1', {'packages':['controls']});
+
+      function drawChart() {
+        // Define a category picker control for the OS column
+        var osPicker = new google.visualization.ControlWrapper({
+          'controlType': 'CategoryFilter',
+          'containerId': 'control2',
+          'options': {
+            'filterColumnLabel': 'OS',
+            'ui': {
+              'labelStacking': 'vertical',
+              'allowTyping': false,
+              'allowMultiple': false
+            }
+          }
+        });
+
+        // Define a category picker control for the Manufacturer column
+        var manufacturerPicker = new google.visualization.ControlWrapper({
+          'controlType': 'CategoryFilter',
+          'containerId': 'control1',
+          'options': {
+            'filterColumnLabel': 'Manufacturer',
+            'ui': {
+              'labelStacking': 'vertical',
+              'allowTyping': false,
+              'allowMultiple': false
+            }
+          }
+        });
+
+        // Define a table
+        var table = new google.visualization.ChartWrapper({
+          'chartType': 'Table',
+          'containerId': 'chart2',
+          'options': {
+            'width': '1350px'
+          }
+        });
+
+        var data = null;
+        var json_table = new google.visualization.DataTable(document.getElementById('chart_div'));
+
+        function getURL(URL) {
+          return $.ajax({
+            type: "GET",
+            url: URL,
+            dataType: "jsonp",
+            async: false,
+            success: function (result) {
+              var data = JSON.stringify(result);
+              var json_data = new google.visualization.DataTable(data, 0.6);
+
+              // Create a dashboard
+              new google.visualization.Dashboard(document.getElementById('dashboard'));
+              // Establish bindings, declaring both slider and category.
+              // Picker will drive both charts
+              bind(osPicker, table);
+              bind(manufacturerPicker, table);
+              // Draw the entire dashboard
+              draw(json_data);
+            }
+          });
+        }
+        // Load the data
+        getURL("#{restURL}");
+      }
+      google.setOnLoadCallback(drawChart);
+
+  body
+    label Device List with Controls
+    p
+    | <div id="dashboard">
+    |   <table>
+    |     <tr style='vertical-align: top'>
+    |       <td style='width: 300px; font-size: 9pt;'>
+    |         <div id="control1" style="font-size:12pt; color:#0000FF"></div>
+    |       </td>
+    |       <td style='width: 300px; font-size: 9pt;'>
+    |         <div id="control2" style="font-size:12pt; color:#0000FF"></div>
+    |       </td>
+    |       <td style='width: 300px; font-size: 9pt;'>
+    |         <div id="control3" style="font-size:12pt; color:#0000FF"></div>
+    |       </td>
+    |     </tr>
+    |   </table>
+    |   <div style="float: left;" id="chart2"></div>
+    | </div>

@@ -1,0 +1,40 @@
+block tab
+  b Glossary
+  p
+  table(border=1)
+    thead
+      tr
+        th(align='left') Name
+        th(align='left') Description
+    tbody
+      - var items = [ {"ColumnName": "Device Internal ID", "Description": "Internal unique identifier for a device"} ]
+      - items.push( {"ColumnName": "Device ID", "Description": "Device identifier determined by ActiveCloak fingerprint library. This is unique across all devices"} )
+      - items.push( {"ColumnName": "Manufacturer", "Description": "Device manufacturer"} )
+      - items.push( {"ColumnName": "Model", "Description": "Device model"} )
+      - items.push( {"ColumnName": "CPU", "Description": "CPU type or SOC"} )
+      - items.push( {"ColumnName": "Screen Density", "Description": "Screen density measured as dpi (dots per inch). Screen resolution is calculated as Height (inches) * dpi x Width (inches) * dpi, i.e., 320 dpi 3 x 4 inch screen has resolution of 960 x 1280"} )
+      - items.push( {"ColumnName": "Screen Width", "Description": "Width of display in pixels"} )
+      - items.push( {"ColumnName": "Screen Height", "Description": "Height of display in pixels"} )
+      - items.push( {"ColumnName": "OS", "Description": "OS identifier (iOS, Android, Win, etc.)"} )
+      - items.push( {"ColumnName": "OS Version", "Description": "OS version"} )
+      - items.push( {"ColumnName": "OS Kernel Version", "Description": "OS kernel version"} )
+      - items.push( {"ColumnName": "Memory", "Description": "Total physical RAM in Mb"} )
+      - items.push( {"ColumnName": "Disk Size", "Description": "Total physical disk size in Mb"} )
+      - items.push( {"ColumnName": "Serial Number", "Description": "Device serial number, e.g., on Android: Settings.Secure.ANDROID_ID"} )
+      - items.push( {"ColumnName": "Compromised", "Description": "On Android, a device is declared 'rooted' when privileged control is obtained by unauthorized user; on IOS, 'jail-broken' is defined as unrestricted access to device file system. This feature is available via the tamper protection library"} )
+      - items.push( {"ColumnName": "IP Address", "Description": "External IP address determined by the web service"} )
+      - items.push( {"ColumnName": "Application ID", "Description": "Client application identifier, e.g., OTT app ID. This is unique across all applications and is pre-provisioned in the telemetry secure store when application symmetric keys are generated at build time"} )
+      - items.push( {"ColumnName": "ActiveCloak ACF", "Description": "ActiveCloak Agent Compatibility Family"} )
+      - items.push( {"ColumnName": "ActiveCloak NCV", "Description": "ActiveCloak Node-lock Compatibility Version"} )
+      - items.push( {"ColumnName": "ActiveCloak Version", "Description": "ActiveCloak version"} )
+      - items.push( {"ColumnName": "Update Date", "Description": "Date-time a record was updated"} )
+      - items.push( {"ColumnName": "Create Date", "Description": "Date-time a record was created"} );
+      - function compare(a,b) {
+      -   if (a.ColumnName < b.ColumnName) return -1;
+      -   if (a.ColumnName > b.ColumnName) return 1;
+      -   return 0;
+      - }
+      each item, i in items.sort(compare)
+        tr
+          td #{item.ColumnName}
+          td #{item.Description}

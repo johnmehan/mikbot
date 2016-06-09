@@ -1,0 +1,45 @@
+html
+  head
+    script(src='http://www.google.com/jsapi')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+    script.
+      google.load('visualization', '1', {'packages':['table', 'corechart']});
+      google.setOnLoadCallback(drawChart);
+      var data = null;
+      function drawChart() {
+        function getURL(URL) {
+          return $.ajax({
+            type: "GET",
+            url: URL,
+            dataType: "jsonp",
+            async: false,
+            success: function (result) {
+              var data = JSON.stringify(result);
+              var json_data = new google.visualization.DataTable(data, 0.6);
+              var table1 = new google.visualization.Table(document.getElementById('table'));
+              // Group by
+              var countDataTable = new google.visualization.data.group(json_data,[1,9], [{column: 3, aggregation: google.visualization.data.count, type: 'number', label: 'count'}]);
+              table1.draw(countDataTable, {title:"Jailbroken Count by Device Type"});
+              // Create dataview and set columns
+              var dataView1 = new google.visualization.DataView(countDataTable)
+              dataView1.setColumns([1,2]);
+              // Create pie chart
+              var table2 = new google.visualization.PieChart(document.getElementById('table2'));
+              table2.draw(dataView1, null);
+            }
+          });
+        }
+        getURL("#{restURL}");
+      };
+
+  body
+    b
+      label Compromised Devices by OS (Jailbreak or Rooted)
+    table
+      tr
+        td
+          div
+          | <div id="table" style="float: left; width: 600px; height: 150px;"></div>
+        td
+          div
+          | <div id="table2" style="float: left; width: 600px; height: 400px;"></></div>

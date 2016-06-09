@@ -1,0 +1,20 @@
+{ 
+        "telemetry_service.logPath": "./log/service.log",
+        "telemetry_service.port": 8886,
+        "telemetry_service.restUrl": "http:///u12kas-srv3.ott.dev.intra:8886/device?output=google",
+        "telemetry_service.parent_install_dir": "/opt/telemetry",
+        "telemetry_service.install_dir": "/opt/telemetry/server" ,
+        "admin_service.logPath": "./log/service.log",
+        "admin_service.port": 8888,
+        "admin_service.parent_install_dir": "/opt/telemetry",
+        "admin_service.install_dir": "/opt/telemetry/admin" ,      
+        "restAPI_service.logPath": "./log/service.log",
+        "restAPI_service.port": 7777,
+        "restAPI_service.parent_install_dir": "/opt/telemetry",
+        "restAPI_service.install_dir": "/opt/telemetry/rest" ,   
+        "database.dbUrl": "mongodb://u12kas-srv3.ott.dev.intra:27017/telemetry",
+        "database.package_name": "mongodb-10gen=2.4.4",  
+        "database.enable10gen": true,
+        "nodejs.version" : "v0.10.10",
+        "nodejs.install_npm" : true
+}

@@ -1,0 +1,119 @@
+body {
+  font-family: Arial;
+  font-size: 9pt;
+}
+
+img {
+  border: 0;
+}
+
+input[type="password"]
+{
+  width: 150px;
+}
+
+input[type="text"]
+{
+  width: 200px;
+}
+
+table.list {
+  border-collapse: collapse;
+}
+table.list th {
+  color: black;
+  background-color: powderBlue;
+  padding: 5px 10px 5px 10px;
+  text-align: center;
+}
+table.list td {
+  padding: 2px 5px 2px 5px;
+  text-align: left;
+}
+table.list, table.list td, table.list th {
+  border: 1px solid #666;
+}
+table.list img {
+  padding: 2px 5px 2px 5px;
+  vertical-align: middle;
+}
+
+#login-border {
+  border: thick solid purple;
+}
+#login-title {
+  color: white;
+  background-color: purple;
+  width: 100%;
+  font-weight: bolder;
+  text-align: center;
+}
+
+#version {
+  font-style: italic;
+  text-align: center;
+}
+
+#header {
+  color: white;
+  background-color: purple;
+  padding: 5px;
+}
+#header ul {
+  list-style-type: none;
+}
+#header li {
+  display: inline;
+}
+#header-title {
+  text-align: center;
+  font-size: 13pt;
+  font-weight: bolder;
+  width: 100%;
+}
+#header-session {
+  text-align: right;
+  white-space: nowrap;
+}
+#header a {
+  color: white;
+}
+
+#nav ul {
+  border-bottom: 1px solid #ccc;
+  list-style-type: none;
+  padding: 10px;
+}
+#nav li {
+  display: inline;
+}
+#nav a {
+  background-color: #eee;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  text-decoration: none;
+  padding: 10px 20px;
+  margin-right: 5px;
+}
+#nav a:hover {
+  background-color: white;
+}
+#nav a.current {
+  background-color: white;
+  border-bottom: 2px solid white;
+}
+
+.msg-error {
+  background: #FFD7D7 url('/images/error.jpg') no-repeat 10px 10px;
+  border: 1px solid darkRed;
+  margin: 10px 0;
+  padding: 10px 10px 10px 36px;
+}
+.msg-info {
+  background: #ECFAE3 url('/images/success.jpg') no-repeat 10px 10px;
+  border: 1px solid #a7bcd6;
+  margin: 10px 0;
+  padding: 10px 10px 10px 36px;
+}

@@ -1,0 +1,15 @@
+module.exports = {
+  development: {
+    dbUrl: '<%= dbUrl_param %>',
+    port: <%= port_param %>,
+    accesslogPath: './log/rest-access.log',
+    logPath: '<%= logPath_param %>',
+    logMaxSize: 512000,
+    logMaxFiles: 5,
+    restUrl: 'http://localhost:<%= port_param %>/device?output=google'
+  }
+  , test: {
+  }
+  , production: {
+  }
+}

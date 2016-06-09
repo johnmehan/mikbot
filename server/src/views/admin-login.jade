@@ -1,0 +1,40 @@
+extends layout
+
+block content
+  br
+  br
+  center
+    table#login-border(cellpadding='0')
+      tr
+        td
+          table(width='100%')
+            tr
+              th#login-title
+                h2 &nbsp; Irdeto - Telemetry Administration &nbsp;
+            tr
+              td
+                br
+                form(action='/login', method='POST')
+                  center
+                    table
+                      tr
+                        td
+                          label Username:
+                        td
+                          input(type='text', name='username', id='username')
+                      tr
+                        td
+                          label Password:
+                        td
+                          input(type='password', name='password', id='password')
+                      tr
+                        td
+                        td
+                          input(type='submit', id='loginSubmit', value='Login')
+                      tr
+                        td(colspan='2')
+                          label &nbsp;
+                      tr
+                        td#version(colspan='2')
+                          label Version &nbsp;
+                            =version

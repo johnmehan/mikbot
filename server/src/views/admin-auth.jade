@@ -1,0 +1,26 @@
+extends admin-tabs
+
+block tab
+  h3 Login Account
+  form(action='/auth/password', method='POST')
+    table
+      tr
+        td
+          label Old password:
+        td
+          input(type='password', name='oldPwd', id='oldPwd', autocomplete='off', required='required')
+      tr
+        td
+          label New password:
+        td
+          input(type='password', name='newPwd', id='newPwd', autocomplete='off', required='required', pattern='(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9_]{6,}', onchange='this.setCustomValidity(this.validity.patternMismatch ? "Minimum 6 characters with lower/uppercase (at least 1 of each), digits (at least 1), underscore" : "");')
+      tr
+        td
+          label Confirm new password:
+        td
+          input(type='password', name='newPwd2', id='newPwd2', autocomplete='off', required='required', onchange='this.setCustomValidity(form.newPwd.value != this.value ? "Must match with above" : "");')
+      tr
+        td
+          &nbsp;
+        td
+          input(type='submit', id='changePwdSubmit', value='Change Password')

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="EC ElGamal Library for Node.js" default="lib-node">
+  <target name="lib-node" description="Build addon library for Node.js">
+    <exec executable="node-gyp" osfamily="unix" failonerror="true">
+      <arg value="rebuild"/>
+    </exec>
+  </target>
+
+  <target name="lib-jni" description="Build native library for JNI">
+    <exec executable="make" failonerror="true">
+      <arg value="lib"/>
+    </exec>
+  </target>
+
+  <target name="test" description="Execute unit-test" depends="clean-test">
+    <exec executable="make" failonerror="true"/>
+  </target>
+
+  <target name="clean-lib" description="Delete library build-artifacts">
+    <exec executable="node-gyp" osfamily="unix">
+      <arg value="clean"/>
+    </exec>
+  </target>
+
+  <target name="clean-test" description="Delete test build-artifacts">
+    <exec executable="make">
+      <arg value="clean"/>
+    </exec>
+  </target>
+
+  <target name="clean" description="Delete all build-artifacts" depends="clean-lib, clean-test"/>
+</project>
+

@@ -1,0 +1,53 @@
+extends admin-tabs
+
+block append head
+  script.
+    function readPrivKeyFile(obj) {
+      var f = obj.files[0];
+      if (f) {
+        if (f.size != 32) {
+          alert('Must select a 32-byte binary file');
+          obj.value = null;
+        } else {
+          var rdr = new FileReader();
+          rdr.onload = function(evt) {
+            document.getElementById('privateKey').value = evt.target.result.split(',')[1];
+          };
+          rdr.readAsDataURL(f);
+        }
+      }
+    }
+
+block tab
+  h3 Server Configuration
+  form(action='/server/key', method='POST')
+    input(type='hidden', name='privateKey', id='privateKey')
+    fieldset
+      legend Server Private-Key
+      table
+        tr
+          td
+            label Last updated:
+          td
+            =serverKeyUpdated
+        tr
+          td
+            label Private EC key:
+          td
+            input(type='file', name='privKeyFile', id='privKeyFile', size='65', title='Binary file', required='required', onchange='readPrivKeyFile(this);')
+      p
+      input(type='submit', id='serverKeySubmit', value='Update')
+  p
+  form(action='/server/parameters', method='POST')
+    fieldset
+      legend System Parameters
+      table
+        for sysParm in sysParms
+          tr
+            td
+              =sysParm.key
+              | :
+            td
+              input(type='text', name=sysParm.key, id=sysParm.key, required='required', value=sysParm.value)
+      p
+      input(type='submit', id='sysParmsSubmit', value='Update')

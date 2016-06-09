@@ -1,0 +1,31 @@
+html
+  head
+    script(src='http://www.google.com/jsapi')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+    script.
+      google.load('visualization', '1', {'packages':['table']});
+      google.setOnLoadCallback(drawChart);
+      var data = null;
+      function drawChart() {
+        var json_table = new google.visualization.Table(document.getElementById('chart_div'));
+        function getURL(URL) {
+          return $.ajax({
+            type: "GET",
+            url: URL,
+            dataType: "jsonp",
+            async: false,
+            success: function (result) {
+              var data = JSON.stringify(result);
+              var json_data = new google.visualization.DataTable(data, 0.6);
+              json_table.draw(json_data, {showRowNumber: false, width: 1350});
+            }
+          });
+        }
+        // Load the data
+        getURL("#{restURL}");
+      }
+
+  body
+    label Devices
+    p
+    | <div id="chart_div" style="width: 2500px; height: 500px;"></div>

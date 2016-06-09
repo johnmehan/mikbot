@@ -1,0 +1,19 @@
+# Template for upstart configuration file on Ubuntu
+# Location: /etc/init/telemetry_admin.conf
+description "Telemetry Admin Service (admin.js)"
+
+start on (local-filesystems and net-device-up IFACE=eth0)
+stop on shutdown
+
+expect fork
+
+script
+     cd <%=install_dir%>
+     exec forever --minUptime 5000 --spinSleepTime 2000 start admin.js
+end script
+
+pre-stop script
+    cd <%=install_dir%>
+    exec forever stop admin.js
+end script
+
