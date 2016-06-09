@@ -12,7 +12,7 @@ void processMove(char *direction){
 
     String command = String(direction);
     
-    int duration = 1000;
+    int duration = 300;
   
     //protect against driving the motors forward and back at the same time, accidentally
     stopBot();
@@ -33,10 +33,26 @@ void processMove(char *direction){
         dance(5);
         Serial.println("Dance");
    }
-   else if (command.equalsIgnoreCase("S")) {
+   else if (command.equalsIgnoreCase("sr")) {
         right();
-        duration = 5000;
-        Serial.println("spin");
+        duration = 3000;
+   }
+   else if (command.equalsIgnoreCase("sl")) {
+      left();
+      duration = 3000;
+      Serial.println("spin");
+   }
+   else if (command.equalsIgnoreCase("ar")) {
+      arcright();
+      Serial.println("arcright");
+   }
+   else if( command.equalsIgnoreCase("al")) {
+      arcleft();
+      Serial.println("arcleft");
+   }
+   else if (command.equalsIgnoreCase("chachacha")) {
+      chachacha();
+      Serial.println("chachacha");
    }
    else
    {
@@ -46,7 +62,6 @@ void processMove(char *direction){
     stopTicker.once(duration/1000.0f, stopBot);
 }
 
-// duration of the move, in milliseconds
 void forward() {
 
     Serial.println("both forward ");
@@ -55,8 +70,6 @@ void forward() {
     digitalWrite(PIN_LEFT_Forward, 1);
 }
 
-
-// duration of the move, in milliseconds
 void backward() {
 
     Serial.println("both backward");
@@ -66,7 +79,6 @@ void backward() {
    
 }
 
-// duration of the move, in milliseconds
 void right() {
 
     Serial.println("Left forward, right back ");
@@ -75,12 +87,20 @@ void right() {
     digitalWrite(PIN_LEFT_Forward, 1);
 }
 
-// duration of the move, in milliseconds
+void arcright() {
+
+    digitalWrite(PIN_LEFT_Forward, 1); 
+}
 void left() {
 
     Serial.println("Left back, right forward ");
     digitalWrite(PIN_RIGHT_Forward, 1);
     digitalWrite(PIN_LEFT_Backward, 1);
+}
+
+void arcleft() {
+
+    digitalWrite(PIN_RIGHT_Forward, 1); 
 }
 
 void dance(int count) {
@@ -94,6 +114,29 @@ void dance(int count) {
     delay(500);
     stopBot();
   }
+}
+
+
+void chachacha() {
+
+  forward();
+  delay(500);
+  stopBot();
+  backward();
+  delay(500);
+  stopBot();
+
+  arcright();
+  delay(200);
+  stopBot();
+  arcleft();
+  delay(200);
+  stopBot();
+  arcright();
+  delay(200);
+  stopBot();
+  
+  
 }
 
 void stopBot() {
