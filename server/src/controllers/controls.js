@@ -5,9 +5,10 @@ exports.render = function(req, res) {
 };
 
 exports.processArrow  = function(req, res) {
+  arrow = req.param('arrow');
   //res.render('admin-controls.jade');
-  console.log("succees1");
-  if(  req.params.arrow == "L"){
+  console.log("success1");
+  if(arrow == "L"){
     console.log("succees");
   }
 };

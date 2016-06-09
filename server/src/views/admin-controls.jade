@@ -46,18 +46,8 @@ block append head
       }
     });
     
-<<<<<<< HEAD
-    function post(dir) {}
-      $.post("/controls/controls/:arrow", {
-=======
     function post(dir) {
-
-
-      $.post("/controls/:arrow", {
->>>>>>> 7f93d2f26bfdf50a9a037989d962add5be8f4a59
-        command:dir
-      },
-      null);
+      $.post("/controls?arrow="+dir, null);
       console.log(event.keyCode);
     }
     
