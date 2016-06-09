@@ -7,8 +7,94 @@ void processMove(char *direction){
     Serial.print(F("Move: "));
     Serial.println(direction);
 
-  
+
+    switch (direction[0]) {
+      case 'F':
+        forward(1000);
+        break;
+      case 'B':
+        backward(1000);
+        break;
+      case 'R':
+        right(1000);
+        break;
+      case 'L':
+        left(1000);
+        break;
+      case 'D':
+        Serial.println("Dance");
+        right(500);
+        left(500);
+        right(500);
+        left(500);
+        right(500);
+        break;
+      default:
+        Serial.println("Unknown move command");
+    }
 }
+
+// duration of the move, in milliseconds
+void forward(int duration) {
+
+    Serial.print("both forward ");
+    Serial.println(duration);
+
+    digitalWrite(PIN_RIGHT_Forward, 1);
+    digitalWrite(PIN_LEFT_Forward, 1);
+
+    delay(duration);
+
+    digitalWrite(PIN_RIGHT_Forward, 0);
+    digitalWrite(PIN_LEFT_Forward, 0);
+}
+
+
+// duration of the move, in milliseconds
+void backward(int duration) {
+
+    Serial.print("both forward ");
+    Serial.println(duration);
+
+    digitalWrite(PIN_RIGHT_Backward, 1);
+    digitalWrite(PIN_LEFT_Backward, 1);
+
+    delay(duration);
+
+    digitalWrite(PIN_RIGHT_Backward, 0);
+    digitalWrite(PIN_LEFT_Backward, 0);
+}
+
+// duration of the move, in milliseconds
+void right(int duration) {
+
+    Serial.print("Left forward, right back ");
+    Serial.println(duration);
+
+    digitalWrite(PIN_RIGHT_Backward, 1);
+    digitalWrite(PIN_LEFT_Forward, 1);
+
+    delay(duration);
+
+    digitalWrite(PIN_RIGHT_Backward, 0);
+    digitalWrite(PIN_LEFT_Forward, 0);
+}
+
+// duration of the move, in milliseconds
+void left(int duration) {
+
+    Serial.print("Left back, right forward ");
+    Serial.println(duration);
+
+    digitalWrite(PIN_RIGHT_Forward, 1);
+    digitalWrite(PIN_LEFT_Backward, 1);
+
+    delay(duration);
+
+    digitalWrite(PIN_RIGHT_Forward, 0);
+    digitalWrite(PIN_LEFT_Backward, 0);
+}
+
 
 /*
  * processConfigRequest  

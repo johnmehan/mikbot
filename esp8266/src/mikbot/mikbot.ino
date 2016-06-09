@@ -47,19 +47,17 @@ boolean is_accesspoint=false;
 // **********************************************
 
 #define AIO_SERVER      "m12.cloudmqtt.com"
-#define AIO_SERVERPORT  13512                   // use 8883 for SSL
-//#define AIO_USERNAME    "vytbbbwk"
-//#define AIO_KEY         "yXqD81sADrdA"
+#define AIO_SERVERPORT  17091                   // use 8883 for SSL
 #define AIO_USERNAME    "mikbot"
-#define AIO_KEY         "mikbot"
+#define AIO_KEY         "mikhailbot"
 
 // **********************************************
 // PIN CONFIG
 // **********************************************
-#define PIN_RIGHT_0   5
-#define PIN_RIGHT_1   4
-#define PIN_LEFT_0    13
-#define PIN_LEFT_1    12
+#define PIN_RIGHT_Forward     5
+#define PIN_RIGHT_Backward    4
+#define PIN_LEFT_Forward      13
+#define PIN_LEFT_Backward     12
 
 
 // **********************************************
@@ -100,7 +98,6 @@ const char CONNECT_FEED[] PROGMEM = "connect";
 Adafruit_MQTT_Publish connectFeed = Adafruit_MQTT_Publish(&mqtt, CONNECT_FEED);
 
 // Setup a feed called 'move' for subscribing to changes.
-//const char MOVE_FEED[] PROGMEM = AIO_USERNAME "/move";
 const char MOVE_FEED[] PROGMEM = "move";
 Adafruit_MQTT_Subscribe moveFeed = Adafruit_MQTT_Subscribe(&mqtt, MOVE_FEED);
 

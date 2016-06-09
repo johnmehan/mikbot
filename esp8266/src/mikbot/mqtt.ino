@@ -9,7 +9,7 @@ bool MQTT_connect() {
     return true;
   }
 
-  Serial.print("Connecting to MQTT... ");
+  Serial.print("Connecting to MQTT ... ");
 
   if( mqtt.connect() != 0) { // connect will return 0 for connected
        Serial.println(mqtt.connectErrorString(ret));
