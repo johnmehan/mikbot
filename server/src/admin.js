@@ -109,6 +109,10 @@ app.get('/tab/controls', users.checkAuth, controls.render);
 
 app.get('/controls/*', users.checkAuth, controls.processArrow);
 
+app.post('tabs/controls/connect', users.checkAuth, controls.connect);
+
+app.post('tabs/controls/disconnect', users.checkAuth, controls.disconnect);
+
 app.get('/tab/server', users.checkAuth, system.render);
 
 app.get('/tab/reports', users.checkAuth, function(req, res) {
