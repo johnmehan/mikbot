@@ -127,3 +127,73 @@ Warning: missing space before text for line 14 of jade file "/Users/cartercook/p
 Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
 Warning: missing space before text for line 14 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
 Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 14 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+js-bson: Failed to load c++ bson extension, using pure JS version
+Thu, 09 Jun 2016 17:33:00 GMT body-parser deprecated bodyParser: use individual json/urlencoded middlewares at admin.js:66:9
+Thu, 09 Jun 2016 17:33:00 GMT body-parser deprecated urlencoded: explicitly specify "extended: true" for extended parsing at node_modules/body-parser/index.js:74:29
+INFO: Admin GUI started on port 8888
+Warning: missing space before text for line 14 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Error: Cannot find module './controllers/keyToMQTT'
+    at Function.Module._resolveFilename (module.js:440:15)
+    at Function.Module._load (module.js:388:25)
+    at Module.require (module.js:468:17)
+    at require (internal/module.js:20:19)
+    at Object.exports.render [as handle] (/Users/cartercook/projects/mikbot/server/src/controllers/controls.js:2:19)
+    at next_layer (/Users/cartercook/projects/mikbot/server/src/node_modules/express/lib/router/route.js:103:13)
+    at Object.exports.checkAuth [as handle] (/Users/cartercook/projects/mikbot/server/src/controllers/users.js:36:3)
+    at next_layer (/Users/cartercook/projects/mikbot/server/src/node_modules/express/lib/router/route.js:103:13)
+    at Route.dispatch (/Users/cartercook/projects/mikbot/server/src/node_modules/express/lib/router/route.js:107:5)
+    at /Users/cartercook/projects/mikbot/server/src/node_modules/express/lib/router/index.js:213:24
+Error: Cannot find module './controllers/keyToMQTT'
+    at Function.Module._resolveFilename (module.js:440:15)
+    at Function.Module._load (module.js:388:25)
+    at Module.require (module.js:468:17)
+    at require (internal/module.js:20:19)
+    at Object.exports.render [as handle] (/Users/cartercook/projects/mikbot/server/src/controllers/controls.js:2:19)
+    at next_layer (/Users/cartercook/projects/mikbot/server/src/node_modules/express/lib/router/route.js:103:13)
+    at Object.exports.checkAuth [as handle] (/Users/cartercook/projects/mikbot/server/src/controllers/users.js:36:3)
+    at next_layer (/Users/cartercook/projects/mikbot/server/src/node_modules/express/lib/router/route.js:103:13)
+    at Route.dispatch (/Users/cartercook/projects/mikbot/server/src/node_modules/express/lib/router/route.js:107:5)
+    at /Users/cartercook/projects/mikbot/server/src/node_modules/express/lib/router/index.js:213:24
+Error: Cannot find module './controllers/keyToMQTT'
+    at Function.Module._resolveFilename (module.js:440:15)
+    at Function.Module._load (module.js:388:25)
+    at Module.require (module.js:468:17)
+    at require (internal/module.js:20:19)
+    at Object.exports.render [as handle] (/Users/cartercook/projects/mikbot/server/src/controllers/controls.js:2:19)
+    at next_layer (/Users/cartercook/projects/mikbot/server/src/node_modules/express/lib/router/route.js:103:13)
+    at Object.exports.checkAuth [as handle] (/Users/cartercook/projects/mikbot/server/src/controllers/users.js:36:3)
+    at next_layer (/Users/cartercook/projects/mikbot/server/src/node_modules/express/lib/router/route.js:103:13)
+    at Route.dispatch (/Users/cartercook/projects/mikbot/server/src/node_modules/express/lib/router/route.js:107:5)
+    at /Users/cartercook/projects/mikbot/server/src/node_modules/express/lib/router/index.js:213:24
+js-bson: Failed to load c++ bson extension, using pure JS version
+js-bson: Failed to load c++ bson extension, using pure JS version
+js-bson: Failed to load c++ bson extension, using pure JS version
+Thu, 09 Jun 2016 17:41:08 GMT body-parser deprecated bodyParser: use individual json/urlencoded middlewares at admin.js:66:9
+Thu, 09 Jun 2016 17:41:08 GMT body-parser deprecated urlencoded: explicitly specify "extended: true" for extended parsing at node_modules/body-parser/index.js:74:29
+INFO: Admin GUI started on port 8888
+Warning: missing space before text for line 14 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+SyntaxError: /Users/cartercook/projects/mikbot/server/src/views/admin-controls.jade:63
+    61|   }
+    62|   console.log(event.keyCode);
+  > 63| });
+    64| 
+    65| block tab
+    66|   canvas(id='myCanvas', width='200', height='100')
+
+Unexpected token ;
+    at assertExpression (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/lexer.js:30:3)
+    at Object.Lexer.attrs (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/lexer.js:647:20)
+    at Object.Lexer.next (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/lexer.js:867:15)
+    at Object.Lexer.lookahead (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/lexer.js:113:46)
+    at Parser.lookahead (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/parser.js:100:23)
+    at Parser.peek (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/parser.js:77:17)
+    at Parser.tag (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/parser.js:733:22)
+    at Parser.parseTag (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/parser.js:719:17)
+    at Parser.parseExpr (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/parser.js:188:21)
+    at Parser.parse (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/parser.js:120:25)
+Warning: missing space before text for line 14 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
