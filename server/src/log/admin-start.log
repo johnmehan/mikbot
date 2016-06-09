@@ -1,5 +1,0 @@
-js-bson: Failed to load c++ bson extension, using pure JS version
-Thu, 09 Jun 2016 14:10:09 GMT body-parser deprecated bodyParser: use individual json/urlencoded middlewares at admin.js:65:9
-Thu, 09 Jun 2016 14:10:09 GMT body-parser deprecated urlencoded: explicitly specify "extended: true" for extended parsing at node_modules/body-parser/index.js:74:29
-INFO: Admin GUI started on port 8888
-ERROR: MongoDB - Error: failed to connect to [localhost:27017]
