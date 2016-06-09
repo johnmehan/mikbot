@@ -46,11 +46,8 @@ block append head
       }
     });
     
-    function post(dir) {}
-      $.post("/controls/:arrow", {
-        command:dir
-      },
-      null);
+    function post(dir) {
+      $.post("/controls?arrow="+dir, null);
       console.log(event.keyCode);
     }
     
