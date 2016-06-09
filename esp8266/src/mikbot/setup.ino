@@ -9,7 +9,7 @@ void setup() {
   //setSSID("RESET");
   //setSSIDPass("TEST");
   
-  Serial.println(F("MikBot - Starting"));
+  Serial.println(F("MikBot - Starting ****** "));
 
   snprintf(DEBUG_MSG,DEBUG_MSG_LEN,"ESP [Id:%x] \n",ESP.getChipId());
   Serial.println(DEBUG_MSG);
@@ -18,17 +18,15 @@ void setup() {
   Serial.println(DEBUG_MSG);
 
   //set PIN MODES
-  /*
-  pinMode(PIN_RIGHT_0, OUTPUT); 
-  pinMode(PIN_RIGHT_1, OUTPUT); 
-  pinMode(PIN_LEFT_0, OUTPUT); 
-  pinMode(PIN_LEFT_1, OUTPUT); 
-  */
+  pinMode(PIN_RIGHT_Forward, OUTPUT); 
+  pinMode(PIN_RIGHT_Backward, OUTPUT); 
+  pinMode(PIN_LEFT_Forward, OUTPUT); 
+  pinMode(PIN_LEFT_Backward, OUTPUT); 
 
   readSSIDValues();  
   setupWiFi();
 
   // Setup MQTT subscription for move feed.
-  //mqtt.subscribe(&moveFeed);
+  mqtt.subscribe(&moveFeed);
 }
 
