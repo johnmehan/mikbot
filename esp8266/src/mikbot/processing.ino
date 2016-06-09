@@ -10,7 +10,7 @@ void processMove(char *direction){
     Serial.print(F("Move: "));
     Serial.println(direction);
 
-    int duration = 1000;
+    int duration = 3000;
     char command = toupper(direction[0]);
 
     //protect against driving the motors forward and back at the same time, accidentally
@@ -23,6 +23,12 @@ void processMove(char *direction){
       case 'B':
         backward();
         break;
+      case '1':
+        digitalWrite(PIN_RIGHT_Forward, 1);
+        break;
+      case '2':
+        digitalWrite(PIN_LEFT_Forward, 1);
+        break;
       case 'R':
         right();
         break;
@@ -32,6 +38,11 @@ void processMove(char *direction){
       case 'D':
         dance(5);
         Serial.println("Dance");
+        break;
+      case 'S':
+        right();
+        duration = 5000;
+        Serial.println("sprin");
         break;
       default:
         Serial.println("Unknown move command");
@@ -53,7 +64,7 @@ void forward() {
 // duration of the move, in milliseconds
 void backward() {
 
-    Serial.println("both backward ");
+    Serial.println("both forward ");
 
     digitalWrite(PIN_RIGHT_Backward, 1);
     digitalWrite(PIN_LEFT_Backward, 1);
@@ -81,16 +92,13 @@ void dance(int count) {
 
   for (int i = 0; i < count; i ++) {
     right();
-    delay(500);
+    delay(750);
     stopBot();
     
     left();
-    delay(500);
+    delay(750);
     stopBot();
   }
-  right();
-  delay(2000);
-  stopBot();
 }
 
 void stopBot() {
