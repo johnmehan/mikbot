@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 void configureAndStartServer(){
 
   //SERVER INIT
@@ -150,11 +149,3 @@ void printIPAddress(IPAddress ipAddress){
   Serial.println(DEBUG_MSG);
 
 }
-
-=======
-
-/************************* WiFi Access Point *********************************/
-
-#define WLAN_SSID       "mehan0"
-#define WLAN_PASS       "casamehan"
->>>>>>> Stashed changes
