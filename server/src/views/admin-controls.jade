@@ -74,25 +74,25 @@ block append head
 block tab
     canvas(id='myCanvas', width='200', height='100')
     #controls
-      a(href='/tab/controls/connect', id='connect')
+      a(href='/controls/connect', id='connect')
         button(type='button') Connect
-      a(href='/tab/controls/disconnect', id='disconnect')
+      a(href='/controls/disconnect', id='disconnect')
         button(type='button') Disconnect
       p
       strong Press arrows to navigate
       table(style='width:50%;')
         tr
           td(colspan='2', align='center')
-            a(href='/tab/controls/arrow=up', id='up')
+            a(href='/controls/arrowUp', id='up')
               button(value='up', style="background-image:url(''):align:center;width:50px;") UP
         tr
           td(align='center', width='50%;')
-            a(href='/tab/controls/arrow=left', id='left')
+            a(href='/controls/arrowLeft', id='left')
               button(value='left', style="background-image:url(''):align:center;width:50px;") LEFT
           td(align='center')
-            a(href='/tab/controls/arrow=right', id='right')
+            a(href='/controls/arrowRight', id='right')
               button(value='right', style="background-image:url(''):align:center;width:50px;") RIGHT
         tr
           td(colspan='2', align='center')
-            a(href='/tab/controls/arrow=down', id='down')
+            a(href='/controls/arrowDown', id='down')
               button(value='down', style="background-image:url(''):align:center;width:50px;") DOWN

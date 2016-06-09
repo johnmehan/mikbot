@@ -1,14 +1,23 @@
+var url = require('url')
+    , util = require('./util');
+var logger = require('./logFactory').getLogger();
+
 exports.render = function(req, res) {
   res.render('admin-controls.jade');
-
-
 };
 
 exports.processArrow  = function(req, res) {
-  arrow = req.param('arrow');
-  //res.render('admin-controls.jade');
-  console.log("success1");
-  if(arrow == "L"){
-    console.log("succees");
+  var urlParts  = url.parse(req.url);
+  if (urlParts.path.endsWith("arrowUP")){
+
+  }else if(urlParts.path.endsWith("arrowDown")){
+
+  }else if(urlParts.path.endsWith("arrowLeft")){
+
+  }else if (urlParts.path.endsWith("arrowRight")){
+
   }
+
+  logger.info(urlParts);
+
 };

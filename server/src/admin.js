@@ -107,7 +107,7 @@ app.get('/tab/apps', users.checkAuth, appDescriptors.render);
 
 app.get('/tab/controls', users.checkAuth, controls.render);
 
-app.post('/controls', users.checkAuth, controls.processArrow);
+app.get('/controls/*', users.checkAuth, controls.processArrow);
 
 app.get('/tab/server', users.checkAuth, system.render);
 
