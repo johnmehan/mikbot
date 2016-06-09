@@ -17,7 +17,8 @@
    2.1. Create DB data directory.
 
           sudo mkdir -p /data/db
-          sudo chown <userName>:<userPassword> /data/db
+          sudo chown <username>:staff /data/db
+            --> Replace <username> with your personal username.
 
    2.2. Start MongoDB daemon process.
 

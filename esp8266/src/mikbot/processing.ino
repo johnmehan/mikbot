@@ -64,7 +64,7 @@ void forward() {
 // duration of the move, in milliseconds
 void backward() {
 
-    Serial.println("both forward ");
+    Serial.println("both backward");
 
     digitalWrite(PIN_RIGHT_Backward, 1);
     digitalWrite(PIN_LEFT_Backward, 1);
