@@ -47,7 +47,9 @@ block append head
     });
     
     function post(dir) {
-      $.post("/controls/controls/:arrow", {
+
+
+      $.post("/controls/:arrow", {
         command:dir
       },
       null);

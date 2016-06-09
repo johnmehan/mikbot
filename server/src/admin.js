@@ -107,6 +107,9 @@ app.get('/tab/apps', users.checkAuth, appDescriptors.render);
 
 app.get('/tab/controls', users.checkAuth, controls.render);
 
+app.get('/tab/controls/:arrow', users.checkAuth, controls.processArrow);
+
+
 app.get('/tab/server', users.checkAuth, system.render);
 
 app.get('/tab/reports', users.checkAuth, function(req, res) {
@@ -132,6 +135,7 @@ app.post('/server/key', users.checkAuth, system.renderServerKeyUpdate);
 app.post('/server/parameters', users.checkAuth, system.renderParametersUpdate);
 
 app.post('/auth/password', users.checkAuth, users.renderPasswordUpdate);
+
 
 app.get('/report/devicelist', users.checkAuth, function(req, res) {
   res.set('Access-Control-Allow-Origin', '*');
