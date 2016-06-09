@@ -7,7 +7,7 @@ block content
         td
           img(src='/images/irdeto.png')
         td#header-title
-          label Telemetry Administration
+          label MikBot Server
         td#header-session
           =sessionUser
         td
@@ -32,16 +32,6 @@ block content
           a(href='/tab/controls', id='tabControls').current Controls
         else
           a(href='/tab/controls', id='tabControls') Controls
-      li
-        if (currentURL == '/tab/server')
-          a(href='/tab/server', id='tabServer').current Server
-        else
-          a(href='/tab/server', id='tabServer') Server
-      li
-        if (currentURL == '/tab/reports')
-          a(href='/tab/reports', id='tabReports').current Reports
-        else
-          a(href='/tab/reports', id='tabReports') Reports
       li
         if (currentURL == '/tab/auth')
           a(href='/tab/auth', id='tabAuth').current Authentication
