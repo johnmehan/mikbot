@@ -41,6 +41,7 @@ var util = require('./controllers/util')
   , users = require('./controllers/users')
   , system = require('./controllers/system')
   , appDescriptors = require('./controllers/applicationDescriptors')
+  , controls = require('./controllers/controls')
   , devices = require('./controllers/devices');
 
 //----- CONFIG -----
@@ -103,6 +104,8 @@ app.get('/admin-help', users.checkAuth, function(req, res) {
 });
 
 app.get('/tab/apps', users.checkAuth, appDescriptors.render);
+
+app.get('/tab/controls', users.checkAuth, controls.render);
 
 app.get('/tab/server', users.checkAuth, system.render);
 
