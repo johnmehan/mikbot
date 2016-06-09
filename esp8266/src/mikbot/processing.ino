@@ -46,9 +46,13 @@ void processMove(char *direction){
       arcright();
       Serial.println("arcright");
    }
+   else if( command.equalsIgnoreCase("al")) {
+      arcleft();
+      Serial.println("arcleft");
+   }
    else if (command.equalsIgnoreCase("chachacha")) {
       chachacha();
-      Serial.println("arcright");
+      Serial.println("chachacha");
    }
    else
    {
