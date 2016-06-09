@@ -3,3 +3,127 @@ Thu, 09 Jun 2016 14:10:09 GMT body-parser deprecated bodyParser: use individual 
 Thu, 09 Jun 2016 14:10:09 GMT body-parser deprecated urlencoded: explicitly specify "extended: true" for extended parsing at node_modules/body-parser/index.js:74:29
 INFO: Admin GUI started on port 8888
 ERROR: MongoDB - Error: failed to connect to [localhost:27017]
+js-bson: Failed to load c++ bson extension, using pure JS version
+Thu, 09 Jun 2016 15:05:20 GMT body-parser deprecated bodyParser: use individual json/urlencoded middlewares at admin.js:65:9
+Thu, 09 Jun 2016 15:05:21 GMT body-parser deprecated urlencoded: explicitly specify "extended: true" for extended parsing at node_modules/body-parser/index.js:74:29
+INFO: Admin GUI started on port 8888
+Warning: missing space before text for line 14 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 14 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 14 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 14 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 14 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 14 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+SyntaxError: /Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade:31
+    29|           a(href='/tab/apps', id='tabApps') Agents
+    30|       li
+  > 31|         if (currentURL.indexOf('/tab/controls')
+    32|           a(href='/tab/apps', id='tabControls').current Controls
+    33|         else
+    34|           a(href='/tab/apps', id='tabControls') Controls
+
+Unexpected token }
+    at assertExpression (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/lexer.js:30:3)
+    at Object.Lexer.conditional (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/lexer.js:495:11)
+    at Object.Lexer.next (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/lexer.js:859:15)
+    at Object.Lexer.lookahead (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/lexer.js:113:46)
+    at Parser.lookahead (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/parser.js:100:23)
+    at Parser.peek (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/parser.js:77:17)
+    at Parser.block (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/parser.js:685:30)
+    at Parser.tag (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/parser.js:800:26)
+    at Parser.parseTag (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/parser.js:719:17)
+    at Parser.parseExpr (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/parser.js:188:21)
+Warning: missing space before text for line 14 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 14 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+ERROR: MongoDB - Error: failed to connect to [localhost:27017]
+ERROR: MongoDB - Error: failed to connect to [localhost:27017]
+ERROR: MongoDB - Error: failed to connect to [localhost:27017]
+js-bson: Failed to load c++ bson extension, using pure JS version
+Thu, 09 Jun 2016 16:09:09 GMT body-parser deprecated bodyParser: use individual json/urlencoded middlewares at admin.js:65:9
+Thu, 09 Jun 2016 16:09:09 GMT body-parser deprecated urlencoded: explicitly specify "extended: true" for extended parsing at node_modules/body-parser/index.js:74:29
+js-bson: Failed to load c++ bson extension, using pure JS version
+Thu, 09 Jun 2016 16:12:20 GMT body-parser deprecated bodyParser: use individual json/urlencoded middlewares at admin.js:66:9
+Thu, 09 Jun 2016 16:12:20 GMT body-parser deprecated urlencoded: explicitly specify "extended: true" for extended parsing at node_modules/body-parser/index.js:74:29
+INFO: Admin GUI started on port 8888
+Warning: missing space before text for line 14 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 14 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+TypeError: /Users/cartercook/projects/mikbot/server/src/views/admin-apps.jade:28
+    26| block tab
+    27|   h3 Agent Descriptors
+  > 28|   if (appDescriptors.length)
+    29|     table.list
+    30|       tr
+    31|         th
+
+Cannot read property 'length' of undefined
+    at eval (eval at <anonymous> (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/jade.js:172:8), <anonymous>:585:21)
+    at eval (eval at <anonymous> (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/jade.js:172:8), <anonymous>:1269:21)
+    at res (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/jade.js:173:38)
+    at Object.exports.render (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/jade.js:269:10)
+    at Object.exports.renderFile (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/jade.js:305:18)
+    at View.exports.renderFile [as engine] (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/jade.js:290:21)
+    at View.render (/Users/cartercook/projects/mikbot/server/src/node_modules/express/lib/view.js:76:8)
+    at Function.app.render (/Users/cartercook/projects/mikbot/server/src/node_modules/express/lib/application.js:519:10)
+    at ServerResponse.res.render (/Users/cartercook/projects/mikbot/server/src/node_modules/express/lib/response.js:782:7)
+    at Object.exports.render [as handle] (/Users/cartercook/projects/mikbot/server/src/controllers/controls.js:2:7)
+Warning: missing space before text for line 14 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+TypeError: /Users/cartercook/projects/mikbot/server/src/views/admin-apps.jade:28
+    26| block tab
+    27|   h3 Agent Descriptors
+  > 28|   if (appDescriptors.length)
+    29|     table.list
+    30|       tr
+    31|         th
+
+Cannot read property 'length' of undefined
+    at eval (eval at <anonymous> (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/jade.js:172:8), <anonymous>:585:21)
+    at eval (eval at <anonymous> (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/jade.js:172:8), <anonymous>:1269:21)
+    at res (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/jade.js:173:38)
+    at Object.exports.render (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/jade.js:269:10)
+    at Object.exports.renderFile (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/jade.js:305:18)
+    at View.exports.renderFile [as engine] (/Users/cartercook/projects/mikbot/server/src/node_modules/jade/lib/jade.js:290:21)
+    at View.render (/Users/cartercook/projects/mikbot/server/src/node_modules/express/lib/view.js:76:8)
+    at Function.app.render (/Users/cartercook/projects/mikbot/server/src/node_modules/express/lib/application.js:519:10)
+    at ServerResponse.res.render (/Users/cartercook/projects/mikbot/server/src/node_modules/express/lib/response.js:782:7)
+    at Object.exports.render [as handle] (/Users/cartercook/projects/mikbot/server/src/controllers/controls.js:2:7)
+js-bson: Failed to load c++ bson extension, using pure JS version
+Thu, 09 Jun 2016 16:43:55 GMT body-parser deprecated bodyParser: use individual json/urlencoded middlewares at admin.js:66:9
+Thu, 09 Jun 2016 16:43:55 GMT body-parser deprecated urlencoded: explicitly specify "extended: true" for extended parsing at node_modules/body-parser/index.js:74:29
+INFO: Admin GUI started on port 8888
+Warning: missing space before text for line 14 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 14 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 14 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 8 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-controls.jade"
+Warning: missing space before text for line 14 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 14 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 9 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-controls.jade"
+Warning: missing space before text for line 14 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 14 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 8 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-controls.jade"
+Warning: missing space before text for line 14 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 14 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 14 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 14 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 14 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"
+Warning: missing space before text for line 19 of jade file "/Users/cartercook/projects/mikbot/server/src/views/admin-tabs.jade"

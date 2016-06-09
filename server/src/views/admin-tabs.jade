@@ -28,6 +28,11 @@ block content
         else
           a(href='/tab/apps', id='tabApps') Agents
       li
+        if (currentURL == '/tab/controls')
+          a(href='/tab/controls', id='tabControls').current Controls
+        else
+          a(href='/tab/controls', id='tabControls') Controls
+      li
         if (currentURL == '/tab/server')
           a(href='/tab/server', id='tabServer').current Server
         else
