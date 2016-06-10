@@ -18,15 +18,15 @@
 
           sudo mkdir -p /data/db
           sudo chown <username>:staff /data/db
-            --> Replace <username> with your personal username.
+            --> Replace <username> with your personal OS username.
 
    2.2. Start MongoDB daemon process.
 
           mongod
 
-3. Start MikBot server.
+3. Start MikBot web-server.
 
-   3.1. Change directory to the server files.
+   3.1. Change directory to the server source-code files.
 
           cd <MikBot_HOME>/server/src
 
@@ -36,5 +36,16 @@
 
    3.3. Start server.
 
-          start.sh
+          ./start.sh
+
+4. Use the MikBot web-GUI.
+
+   4.1. Login via web-browser at URL:
+
+          http://localhost:8888/admin
+
+   4.2. Default credentials:
+
+         Username:  sysadmin
+         Password:  admin1Pwd
 
