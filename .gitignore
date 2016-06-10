@@ -1,8 +1,5 @@
-.idea/
-.DS_Store
-dist/
-server/.idea/
-server/src/log/
-server/thirdparty/
-*.log
+**.idea/
+**.DS_Store
 *.iml
+dist/
+server/src/log/
