@@ -27,20 +27,28 @@
   window.addEventListener("keydown", function(e) {
     switch(event.keyCode) {
       case 37: //left
+        if(!left) {
+          command('L');
+        }
         left = true;
-        command('L');
         break;
       case 38: //up
+        if(!up) {
+          command('F');
+        }
         up = true;
-        command('F');
         break;
       case 39: //right
+        if(!right) {
+          command('R');
+        }
         right = true;
-        command('R');
         break;
       case 40: //down
+        if(!down) {
+          command('D');
+        }
         down = true;
-        command('D');
         break;
     }
   });
