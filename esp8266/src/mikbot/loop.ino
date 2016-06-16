@@ -5,6 +5,20 @@ void loop() {
   // connection and automatically reconnect when disconnected).  See the MQTT_connect
   // function definition further below.
 
+
+  //BLINK STATUS LED
+  if (millis() - lastBlink > blinkInterval){
+          if(led_val==LOW) {
+            led_val=HIGH;
+            setLEDStatus();
+          }else{
+            led_val=LOW;
+            setLEDOff();
+          }
+          lastBlink = millis();
+  }
+
+
   if(is_accesspoint==false){
   
       if(MQTT_connect()){
@@ -17,14 +31,15 @@ void loop() {
               processMove((char *)moveFeed.lastread);
             }
           }
-          
+
+          /*
           Serial.print(F("\nSending connect val "));
           if (! connectFeed.publish(x++)) {
             Serial.println(F("Failed"));
           } else {
             Serial.println(F("OK!"));
           }
-          
+          */
           // ping the server to keep the mqtt connection alive
           // NOT required if you are publishing once every KEEPALIVE seconds
           if(! mqtt.ping()) {
