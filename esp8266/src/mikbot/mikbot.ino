@@ -47,17 +47,23 @@ boolean is_accesspoint=false;
 // **********************************************
 
 #define AIO_SERVER      "m12.cloudmqtt.com"
-#define AIO_SERVERPORT  17091                   // use 8883 for SSL
+#define AIO_SERVERPORT  17091 //mikhbot@gmail.com                  
+//#define AIO_SERVERPORT  13512  //jmehan@yahoo.com                 
+
 #define AIO_USERNAME    "mikbot"
 #define AIO_KEY         "mikhailbot"
 
 // **********************************************
 // PIN CONFIG
 // **********************************************
-#define PIN_RIGHT_Forward     5
-#define PIN_RIGHT_Backward    4
+#define PIN_RIGHT_Forward     14
+#define PIN_RIGHT_Backward    12
 #define PIN_LEFT_Forward      13
-#define PIN_LEFT_Backward     12
+#define PIN_LEFT_Backward     5
+
+#define PIN_STATUS_RED        4
+#define PIN_STATUS_GREEN      2
+#define PIN_STATUS_BLUE       15
 
 
 // **********************************************
@@ -66,6 +72,26 @@ boolean is_accesspoint=false;
 
 char DEBUG_MSG[101];
 int  DEBUG_MSG_LEN=100;
+
+
+// **********************************************
+// STATUS LED variables
+// **********************************************
+int STATUS_STARTING=0;
+int STATUS_RUNNING=1;
+int STATUS_ACCESS_POINT=2;
+
+int statusColors[][3] = { 
+                    {255,0,0},        // STARTING = RED
+                    {0,255,0},        // RUNNING = green
+                    {0,0,255}         // ACCESS MODE = blue
+                    };
+
+int status=STATUS_STARTING;
+int led_val=0;
+long lastBlink = 0;
+int blinkInterval = 1000; // blink every 1 seconds
+
 
 
 /************ Global State (you don't need to change this!) ******************/
