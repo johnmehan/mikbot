@@ -17,8 +17,9 @@ bool MQTT_connect() {
        Serial.println("Failed to connect to MQTT!");
        return false;
   }
-  
-  connectFeed.publish(x++);
+
+  snprintf(DEBUG_MSG,DEBUG_MSG_LEN,"%i.%i.%i.%i\n",ipAddress[0],ipAddress[1],ipAddress[2],ipAddress[3]);
+  connectFeed.publish(DEBUG_MSG);
   Serial.println("MQTT Connected!");
   return true;
   
