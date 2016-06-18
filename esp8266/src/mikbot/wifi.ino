@@ -84,6 +84,7 @@ void setupWiFi()
             MDNS.addService("http", "tcp", 80);
             
             status=STATUS_RUNNING;
+            setLEDStatus();
 
 
       }else{
@@ -123,6 +124,7 @@ int testWifi(void) {
 void setupAP(void) {
 
   status=STATUS_ACCESS_POINT;
+  setLEDStatus();
   
   WiFi.mode(WIFI_STA);
   WiFi.disconnect();

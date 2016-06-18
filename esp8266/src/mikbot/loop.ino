@@ -7,7 +7,10 @@ void loop() {
 
 
   //BLINK STATUS LED
-  if (millis() - lastBlink > blinkInterval){
+  
+/*  
+
+ if (millis() - lastBlink > blinkInterval){
           if(led_val==LOW) {
             led_val=HIGH;
             setLEDStatus();
@@ -17,6 +20,7 @@ void loop() {
           }
           lastBlink = millis();
   }
+*/
 
 
   if(is_accesspoint==false){

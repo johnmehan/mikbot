@@ -17,49 +17,77 @@ void processMove(char *direction){
     //protect against driving the motors forward and back at the same time, accidentally
     stopBot();
 
-    if (command.equalsIgnoreCase("F")) {
+    if (command.equalsIgnoreCase("FF")) {
         forward();
+    }
+    else if (command.equalsIgnoreCase("BB")) {
+        backward();
+    }
+   else if (command.equalsIgnoreCase("RR")) {
+        right();
+   }
+   else if (command.equalsIgnoreCase("LL")) {
+        left();
+   }
+       if (command.equalsIgnoreCase("F")) {
+        forward();
+        stopTicker.once(duration/1000.0f, stopBot);
     }
     else if (command.equalsIgnoreCase("B")) {
         backward();
+        stopTicker.once(duration/1000.0f, stopBot);
     }
    else if (command.equalsIgnoreCase("R")) {
         right();
+        stopTicker.once(duration/1000.0f, stopBot);
    }
    else if (command.equalsIgnoreCase("L")) {
         left();
+        stopTicker.once(duration/1000.0f, stopBot);
    }
    else if (command.equalsIgnoreCase("D")) {
         dance(5);
         Serial.println("Dance");
+        stopTicker.once(duration/1000.0f, stopBot);
    }
    else if (command.equalsIgnoreCase("sr")) {
         right();
         duration = 3000;
+        stopTicker.once(duration/1000.0f, stopBot);
    }
    else if (command.equalsIgnoreCase("sl")) {
       left();
       duration = 3000;
+      stopTicker.once(duration/1000.0f, stopBot);
       Serial.println("spin");
    }
    else if (command.equalsIgnoreCase("ar")) {
       arcright();
+      stopTicker.once(duration/1000.0f, stopBot);
       Serial.println("arcright");
    }
    else if( command.equalsIgnoreCase("al")) {
       arcleft();
+      stopTicker.once(duration/1000.0f, stopBot);
       Serial.println("arcleft");
+      
+      
    }
    else if (command.equalsIgnoreCase("chachacha")) {
       chachacha();
       Serial.println("chachacha");
+      stopTicker.once(duration/1000.0f, stopBot);
+   }
+   else if (command.equalsIgnoreCase("s")) {
+      stopBot();
+      Serial.println("stop");
    }
    else
    {
         Serial.println("Unknown move command");
     }
 
-    stopTicker.once(duration/1000.0f, stopBot);
+   
 }
 
 void forward() {
