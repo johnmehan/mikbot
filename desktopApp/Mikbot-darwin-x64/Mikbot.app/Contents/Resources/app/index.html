@@ -5,7 +5,7 @@
   const mqtt = require('mqtt'); //include our node library
 
   // Create a client connection
-  var client = mqtt.createClient(17091, "m12.cloudmqtt.com", {
+  var client = mqtt.connect("mqtt://m12.cloudmqtt.com:17091", {
     username: "mikbot",
     password: "mikhailbot" 
   });
